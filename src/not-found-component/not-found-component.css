@@ -1,0 +1,23 @@
+.not-found-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.not-found-page__content {
+    text-align: center;
+}
+
+.not-found-page__title {
+    font-size: 4rem;
+    font-weight: 600;
+    font-family: 'Arial', sans-serif;
+    color: #4d4d4d;
+}
+
+.not-found-page__description {
+    font-size: 1rem;
+    font-family: 'Arial', sans-serif;
+    color: #4d4d4d;
+}
