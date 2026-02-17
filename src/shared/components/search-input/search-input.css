@@ -1,0 +1,28 @@
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    border: 1.5px solid #1f2937;
+    height: 40px;
+    font-size: 12px;
+    font-family: 'Arial', sans-serif;
+    outline: none;
+    color: #cbd5e1;
+    background-color: #111827;
+}
+
+
+
+@media (max-width: 900px) {
+    .search-input {
+        width: 100%;
+    }
+
+
+}

@@ -1,0 +1,34 @@
+.button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 3px;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.6);
+    border: none;
+    background-color: #2b79c2;
+    color: #fff;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #1e5b92;
+}
+
+.disabled {
+    background-color: #1e5c929a;
+    cursor: not-allowed;
+    color: #cbd5e1;
+}
+
+@media (max-width: 480px) {
+
+    .button {
+        font-size: 0.8rem;
+        padding: 0.2rem 1rem;
+
+    }
+}

@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -7,5 +7,6 @@
 }
 
 body {
-    background-color: #f1f1f2b4;
+    background-color: #0c0e14;
+    color: white;
 }

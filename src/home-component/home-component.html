@@ -1,1 +1,14 @@
-<p>home-component works!</p>
+<main class="home-container">
+    <app-card-component>
+        <article class="hero-section">
+            <div class="hero-content">
+                <h1>Welcome to Task Manager</h1>
+                <p>Manage your tasks easily and efficiently.</p>
+                <app-button buttonText="view tasks" (onClick)="navigateToTasks()"></app-button>
+            </div>
+            <div class="hero-image">
+                <img src="tm.png" alt="Task Manager Logo" class="hero-image-img">
+            </div>
+        </article>
+    </app-card-component>
+</main>

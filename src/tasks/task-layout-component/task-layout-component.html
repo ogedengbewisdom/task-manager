@@ -1,14 +1,82 @@
-<div class="layout-container">
-    <aside class="sidebar">
-        <div class="logo">
-            <h5>Task Manager</h5>
-        </div>
-      <nav class="menu">
-        navbar-nav
-      </nav>
-    </aside>
 
-    <main class="main-content">
-        <router-outlet />
+<div class="layout">
+  <aside class="sidebar">
+    <div class="logo-wrapper">
+      <img src="logo.png" alt="logo" class="logo">
+      <h5>TM</h5>
+    </div>
+      <nav class="nav">
+        <ul class="nav-list">
+          @for (navLink of navLinks; track navLink.label) {
+            <li class="nav-item">
+              <a 
+                class="nav-link" 
+                [routerLink]="navLink.routerLink" 
+                routerLinkActive="active" 
+                [routerLinkActiveOptions]="{ exact: navLink.exact }">
+                {{navLink.label | titlecase}}
+              </a>
+            </li>
+          }
+        </ul>
+      </nav>
+    <button class="logout" (click)="logout()">Logout</button>
+  </aside>
+
+  <div class="main">
+    <header class="header">
+      <div>
+        <div class="menu-icon" role="button" (click)="toggleMenu()">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </div>
+        @if(isMenuOpen()) {
+          <div class="menu-overlay" (click)="toggleMenu()"></div>
+            <div class="menu-content">
+              <div class="menu-header">
+                <div class="menu-header-logo">
+                  <img src="logo.png" alt="logo" class="logo">
+                  <h5>TM</h5>
+                </div>
+                <div class="menu-header-close" (click)="toggleMenu()" role="button">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </div>
+              </div>
+              <div class="menu-wrapper">
+              <ul class="menu-list">
+                @for (navLink of navLinks; track navLink.label) {
+                  <li class="menu-item">
+                    <a class="menu-link" [routerLink]="navLink.routerLink" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: navLink.exact }" (click)="toggleMenu()">{{navLink.label | titlecase}}</a>
+                  </li>
+                }
+              </ul>
+
+              <div class="menu-logout">
+                <button class="logout" (click)="logout()">Logout</button>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+      <div class="avatar">AB</div>
+    </header>
+
+    <main class="content">
+      <router-outlet></router-outlet>
     </main>
+  </div>
 </div>

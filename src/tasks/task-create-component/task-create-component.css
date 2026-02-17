@@ -1,0 +1,148 @@
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    color: #cbd5e1;
+    padding: 0.5rem 0rem;
+
+}
+
+.task-form {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.text-input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    border: 1.5px solid #1f2937;
+    height: 40px;
+    font-size: 12px;
+    font-family: 'Arial', sans-serif;
+    outline: none;
+    color: #cbd5e1;
+    background-color: #111827;
+}
+
+.textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1.5px solid #1f2937;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: 'Arial', sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+    color: #cbd5e1;
+    background-color: #111827;
+}
+
+
+label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+
+/* p {
+    font-size: 0.85rem;
+    color: #d32f2f;
+    font-weight: 500;
+} */
+
+
+input.error, textarea.error, select.error {
+    border-color: #d32f2f;
+    outline: none;
+}
+
+.state-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    min-height: 100px;
+  }
+
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .error-message {
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    color: #ff0000;
+  }
+  
+  .error-code {
+    font-size: 0.75rem;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    color: #ff0000;
+  }
+
+
+  .success-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .success-message {
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    color: green;
+  }
+
+  .loading-message {
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+  }
+
+  .task-title {
+    margin-top: 1rem;
+  }
+
+  .task-title h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    font-family: 'Arial', sans-serif;
+  }
+
+
+@media (max-width: 900px) {
+    .text-input, .textarea-input, .select-input {
+        width: 100%;
+    }
+
+}

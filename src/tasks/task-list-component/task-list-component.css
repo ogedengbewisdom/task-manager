@@ -1,0 +1,134 @@
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    color: #cbd5e1;
+    padding: 0.5rem 0rem;
+}
+
+.task-list-container {
+    width: 100%;
+  }
+  
+  .task-table-wrapper {
+    border-radius: 0.5rem;
+    border: 1px solid #1f2937;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    /* overflow: hidden;   */
+  }
+  
+  .task-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table-header {
+    border-bottom: 1px solid #1f2937;
+    background-color: #111827; 
+  }
+
+  .search-input-container {
+    margin-top: 2rem;
+    width: 100%;
+  }
+  
+  
+  .table-header-row th {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .table-row {
+    border-bottom: 1px solid rgba(34, 45, 61, 0.1);
+    transition: background-color 0.2s;
+  }
+  
+  /* .table-row:hover {
+    background-color: #1f2937;
+    cursor: pointer;
+  } */
+
+  .strike-through {
+    text-decoration: line-through;
+    /* text-decoration-color: #6b7280; */
+    color: #6b7280;
+    line-height: 1.5;
+    font-style: italic;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .priority-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+  }
+
+  .priority-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    /* background-color: #FFD700; */
+  }
+
+  .overdue {
+    color: red;
+    /* font-weight: 600; */
+    text-decoration: line-through;
+  }
+  
+  .table-row:last-child {
+    border-bottom: none;
+  }
+  
+  .table-row td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-size: 0.85rem;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .no-tasks-found {
+    text-align: center;
+    /* padding: 1rem 0; */
+    min-height: 40vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .no-tasks-found p {
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+    color: #6b7280;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .table-header-row th {
+      padding: 1.5rem 0.5rem;
+      /* white-space: nowrap; */
+      font-size: 0.75rem;
+    }
+    .table-row td {
+      padding: 1.5rem 0.5rem;
+      /* white-space: nowrap; */
+      font-size: 0.65rem;
+    }
+
+    .no-tasks-found p {
+      font-size: 1rem;
+    }
+  }

@@ -1,0 +1,9 @@
+.card-wrapper {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+}

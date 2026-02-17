@@ -1,1 +1,112 @@
-<p>task-detail-component works!</p>
+<main class="task-detail-container">
+        <button class="back-button" (click)="goBack()">
+            <svg xmlns="http://www.w3.org/2000/svg" 
+            width="16" 
+            height="16" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            stroke-width="2" 
+            stroke-linecap="round" 
+            stroke-linejoin="round">
+         <path d="M19 12H5"></path>
+         <path d="M12 19l-7-7 7-7"></path>
+       </svg>
+            <span>Back</span>
+          </button>
+    @if(state$ | async; as state) {
+        @if(state.loader) {
+            <app-loader />
+        }
+        @else if(state.error) {
+            <app-display-error [error]="state.error" [statusCode]="state.statusCode" />
+        }
+        @else {
+            @if (task$ | async; as task) {
+                <section class="task-detail-section">
+                    <article class="task-detail-article">
+                        <div class="task-detail-header">
+                                <h2>{{task.title | titlecase}}</h2>
+                        </div>
+                        <div class="task-detail-content">
+                                <p>{{task.description}}</p>
+                        </div>
+        
+                        <div class="task-detail-footer">
+                            <div class="task-detail-footer-item">
+                                <div class="task-detail-footer-item-title">Priority</div>
+                                <div class="priority-container">
+                                    <div class="priority-dot" [style.background-color]="task.priority === 'low' ? 'green' : task.priority === 'medium' ? 'orange' : 'red'"></div>
+                                    <span class="task-detail-footer-item-value">{{task.priority | titlecase}}</span>
+                                </div>
+                            </div>
+                            <div class="task-detail-footer-item"> 
+                                <div class="task-detail-footer-item-title">Status</div>
+                                <span class="task-detail-footer-item-value" [style.color]="task.status === 'completed' ? 'green' : task.status === 'in_progress' ? '#1e5b92' : '#6b7280'" [style.font-weight]="'600'">{{task.status | titlecase}}</span>
+                            </div>
+        
+                            <div class="task-detail-footer-item">
+                                <div class="task-detail-footer-item-title">Created At</div>
+                                <span class="task-detail-footer-item-value">{{task.createdAt | date:'dd/MM/yyyy'}}</span>
+                            </div>
+        
+                            <div class="task-detail-footer-item">
+                                <div class="task-detail-footer-item-title">Due Date</div>
+                                <span class="task-detail-footer-item-value" [class.overdue]="isOverdue(task)">{{task.dueDate | date:'dd/MM/yyyy'}}</span>
+                            </div>
+                            </div>
+                    </article>
+                    <div class="task-detail-actions">
+                        <div class="task-detail-action-header">
+                            <h4>Actions</h4>
+                        </div>
+                      
+                        @if(error$ | async; as error) {
+                            <div class="error-container">
+                                <p class="error-message">{{error}}</p>
+                                <p class="error-code">Error Code: {{statusCode$ | async}}</p>
+                            </div>
+                        }
+
+                        @if(state.success) {
+                            <div class="success-container">
+                                <p class="success-message">{{state.success}}</p>
+                                <p class="success-code">Success Code: {{state.statusCode}}</p>
+                            </div>
+                        }
+                        <div class="task-detail-action-buttons">
+                            <button class="task-detail-action-button" [class.disabled]="state.loader" (click)="editTask(task.id)">Edit</button>
+                            <button class="task-detail-action-button" (click)="deleteTask(task.id)" [class.disabled]="state.loader">Delete</button>
+                        @if(task.status === 'pending') {
+                            <button 
+                            class="task-detail-action-button" 
+                            [class.disabled]="state.loader" 
+                            (click)="markAsInProgress(task.id)">
+                            Mark as In Progress
+                            </button>
+                        }
+                        
+                        @if(task.status === 'in_progress') {
+                            <button 
+                            class="task-detail-action-button" 
+                            [class.disabled]="state.loader" 
+                            (click)="markAsCompleted(task.id)">
+                            Mark as Completed
+                            </button>
+                        }
+                        
+                        </div>
+                    </div>
+                  </section>
+            }@else {
+                <div class="task-detail-not-found">
+                    <h4>Task not found</h4>
+                    <p>The task you are looking for does not exist.</p>
+                    <app-button [buttonText]="'Back'" (onClick)="goBack()" />
+                    <!-- <button class="task-detail-action-button" (click)="goBack()">Back</button> -->
+                </div>
+            }
+        }
+    }
+
+</main>

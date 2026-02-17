@@ -1,1 +1,112 @@
-<p>task-create-component works!</p>
+<main class="task-create-container">
+    <button class="back-button" (click)="goBack()">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+        width="16" 
+        height="16" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        stroke-width="2" 
+        stroke-linecap="round" 
+        stroke-linejoin="round">
+     <path d="M19 12H5"></path>
+     <path d="M12 19l-7-7 7-7"></path>
+   </svg>
+        <span>Back</span>
+      </button>
+
+      
+      <!-- @if(task$ | async; as task) {} -->
+
+      <div class="task-title">
+        <h2>{{isEditMode ? 'Edit Task' : 'Create Task'}}</h2>
+      </div>
+
+      <form class="task-form" #form="ngForm" >
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input class="text-input" [class.error]="titleField.touched && titleField.invalid" type="text" id="title" name="title" placeholder="Enter task title" [(ngModel)]="title" #titleField="ngModel" required minlength="4">
+            @if(titleField.touched && titleField.invalid) {
+                    @if(titleField.errors?.['required']) {
+                        <p class="error-message">Title is required</p>
+                }
+                    @if(titleField.errors?.['minlength']) {
+                        <p class="error-message">Title must be at least 4 characters long</p>
+                }
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="textarea" [class.error]="descriptionField.touched && descriptionField.invalid" id="description" name="description" placeholder="Enter task description" [(ngModel)]="description" #descriptionField="ngModel" rows="8" required minlength="10"></textarea>
+            @if(descriptionField.touched && descriptionField.invalid) {
+                @if(descriptionField.errors?.['required']) {
+                    <p class="error-message">Description is required</p>
+                }
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="priority">Priority:</label>
+            <select class="text-input" [class.error]="priorityField.touched && priorityField.invalid" id="priority" name="priority" [(ngModel)]="priority" #priorityField="ngModel" required>
+                <option value="" disabled selected>Select Priority</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            @if(priorityField.touched && priorityField.invalid) {
+                @if(priorityField.errors?.['required']) {
+                    <p class="error-message">Priority is required</p>
+                }
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="status">Status:</label>
+            <select class="text-input" [class.error]="statusField.touched && statusField.invalid" id="status" name="status" [(ngModel)]="status" #statusField="ngModel" required>
+                <option value="" disabled selected>Select Status</option>
+                <option value="pending">Pending</option>
+                <option value="in_progress">In Progress</option>
+                <option value="completed">Completed</option>
+            </select>
+            @if(statusField.touched && statusField.invalid) {
+                @if(statusField.errors?.['required']) {
+                    <p class="error-message">Status is required</p>
+                }
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="dueDate">Due Date:</label>
+            <input class="text-input" [min]="todayDate" [class.error]="dueDateField.touched && dueDateField.invalid" type="date" id="dueDate" name="dueDate" placeholder="Enter due date" [(ngModel)]="dueDate" #dueDateField="ngModel" required>
+            @if(dueDateField.touched && dueDateField.invalid) {
+                @if(dueDateField.errors?.['required']) {
+                    <p class="error-message">Due date is required</p>
+                }
+            }
+        </div>
+        @if(state$ | async; as state) {
+       <div class="state-container">
+            @if(state.error) {
+            <div class="error-container">
+                <p class="error-message">{{state.error}}</p>
+                <p class="error-code">Error Code: {{state.statusCode}}</p>
+            </div>
+        }
+
+        @if(state.success) {
+            <div class="success-container">
+                <p class="success-message">{{state.success}}</p>
+                <p class="success-code">Success Code: {{state.statusCode}}</p>
+            </div>
+        }
+
+        @if(state.loader) {
+            <p>please wait...</p>
+        }
+    </div>
+        <app-button [buttonText]="isEditMode ? 'Update Task' : 'Create Task'" (onClick)="saveTask()" [isDisabled]="form.invalid || state.loader"></app-button>
+    
+        }
+    </form>
+</main>

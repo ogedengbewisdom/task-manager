@@ -1,0 +1,5 @@
+<form action="" class="search-form">
+    <input type="text" placeholder="Search Task..." class="search-input" name="searchValue"
+        [(ngModel)]="searchValue" (ngModelChange)="onSearch($event)" [value]="searchValue">
+    <!-- <button type="button" class="search-button" (click)="navigateToCreateProduct()">Create</button> -->
+</form>

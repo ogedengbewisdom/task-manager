@@ -13,7 +13,8 @@ export const routes: Routes = [
         component: TaskLayoutComponent,
         children: [
             {path: '', component: TaskListComponent},
-            {path: 'create', component: TaskCreateComponent},
+            {path: 'new', component: TaskCreateComponent},
+            {path: 'edit/:id', component: TaskCreateComponent},
             {path: ':id', component: TaskDetailComponent},
         ]
     },

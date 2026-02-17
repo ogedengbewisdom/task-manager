@@ -1,1 +1,70 @@
-<p>task-list-component works!</p>
+<div class="task-list-container">
+    <button class="back-button" (click)="goBack()">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+        width="16" 
+        height="16" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        stroke-width="2" 
+        stroke-linecap="round" 
+        stroke-linejoin="round">
+     <path d="M19 12H5"></path>
+     <path d="M12 19l-7-7 7-7"></path>
+   </svg>
+        <span>Back</span>
+      </button>
+
+    @if(state$ | async; as state) {
+        @if(state.loader) {
+            <app-loader />
+        }
+
+        @else if(state.error) {
+            <app-display-error [error]="state.error" [statusCode]="state.statusCode" />
+        }
+
+    }
+
+    <div class="search-input-container">
+        <app-search-input (search)="searchTask.set($event)" [searchValue]="searchTask()" />
+    </div>
+
+    @if(tasks$ | async; as tasks) {
+
+    <article class="task-table-wrapper">
+        <table class="task-table">
+            <thead class="table-header">
+                <tr class="table-header-row">
+                    @for (header of headers; track header) {
+                        <th>{{header | titlecase}}</th>
+                    }
+                </tr>
+            </thead>
+            <tbody class="table-body">
+                @if (tasks$ | async; as tasks) {
+                @for (task of tasks; track task.id) {
+                    <tr class="table-row" (click)="navigateToTask(task.id)" appHighLightTask hoverColor="#1f2937">
+                        <td [class.strike-through]="task.status === 'completed'">{{task.title| titlecase | truncate: 20}}</td>
+                        <td>
+                            <div class="priority-container">
+                               <div class="priority-dot" [style.background-color]="task.priority === 'low' ? 'green' : task.priority === 'medium' ? 'orange' : 'red'"></div>
+                               <span class="priority-text">{{task.priority | titlecase}}</span>
+                            </div>
+                        </td>
+                        <td [style.color]="task.status === 'completed' ? 'green' : task.status === 'in_progress' ? '#1e5b92' : '#6b7280'" [style.font-weight]="'600'">{{task.status | titlecase}}</td>
+                        <td [class.overdue]="isOverdue(task)">{{task.dueDate | date:'dd/MM/yyyy'}}</td>
+                        <!-- <td>{{task.description}}</td> -->
+                    </tr>
+                }@empty {
+                    <div class="no-tasks-found">
+                        <p>No tasks found</p>
+                    </div>
+                }
+            }
+            </tbody>
+        </table>
+    </article>
+}
+
+</div>

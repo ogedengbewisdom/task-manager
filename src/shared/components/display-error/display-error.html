@@ -1,0 +1,9 @@
+<div class="error-container">
+    <p class="error-message">{{ error }}</p>
+    @if(statusCode !== null) {
+    <p class="error-code">Error Code: {{ statusCode }}</p>
+    }
+    <div class="error-buttons">
+        <app-button [buttonText]="'Go Home'" (onClick)="goHome()" />
+    </div>
+</div>

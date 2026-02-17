@@ -1,0 +1,41 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Task",
+      "description": "This is the first task i created for myself",
+      "priority": "low",
+      "status": "in_progress",
+      "dueDate": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-02-17T19:15:41.978Z"
+    },
+    {
+      "id": "2",
+      "title": "Task 2",
+      "description": "This is the second task...",
+      "priority": "medium",
+      "status": "pending",
+      "dueDate": "2026-01-02T00:00:00.000Z",
+      "updatedAt": "2026-02-17T19:16:18.698Z"
+    },
+    {
+      "id": "3",
+      "title": "Task 3 is a long title that needs to be truncated",
+      "description": "This is the third task...",
+      "priority": "high",
+      "status": "completed",
+      "dueDate": "2026-01-03T00:00:00.000Z",
+      "createdAt": "2026-01-03T00:00:00.000Z",
+      "updatedAt": "2026-01-03T00:00:00.000Z"
+    },
+    {
+      "id": "c11f",
+      "title": "Cors error fixed",
+      "description": "This need urgent attention as the frontend developer can access the endpoint",
+      "priority": "high",
+      "status": "in_progress",
+      "dueDate": "2026-02-18T00:00:00.000Z",
+      "updatedAt": "2026-02-17T18:56:00.115Z"
+    }
+  ]
+}
